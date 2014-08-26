@@ -31,7 +31,7 @@
 
                     /**
                      * Ссылка на этот валидатор
-                     * @type {AnotherJS.Validator}
+                     * @type {MyShinyBicycleJS.Validator}
                      */
                     Exemplar = this,
 
@@ -55,13 +55,13 @@
 
                     /**
                      * Ссылка на родительский валидатор
-                     * @type {AnotherJS.Validator}
+                     * @type {MyShinyBicycleJS.Validator}
                      */
                     Parent = __parent,
 
                     /**
                      * Объект, содержащий дочерние валидаторы
-                     * в формате {string} name : {AnotherJS.Validator} Object
+                     * в формате {string} name : {MyShinyBicycleJS.Validator} Object
                      * @type {Object}
                      */
                     Validators = {},
@@ -218,11 +218,11 @@
                  * @param name
                  * @param element
                  * @param events
-                 * @returns {AnotherJS.Validator}
+                 * @returns {MyShinyBicycleJS.Validator}
                  * @constructor
                  */
                 this.AddValidator = function(name, element, events){
-                    var newValidator = new AnotherJS.Validator(element , events, Exemplar, name);
+                    var newValidator = new MyShinyBicycleJS.Validator(element , events, Exemplar, name);
                     Validators[name] = newValidator;
                     return newValidator;
                 };
