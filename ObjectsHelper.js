@@ -14,7 +14,7 @@
                 notexist : Helper.CheckProperties( 'theprop.subprop.subsubprop2', Helper ),
                 value    : Helper.CheckProperties( 'theprop.subprop.subsubprop.string', Helper ),
                 valuelen : Helper.CheckProperties( 'theprop.subprop.subsubprop.string.length', Helper ),
-                valuefun : Helper.CheckProperties( 'theprop.subprop.subsubprop.string.Test', Helper )
+                valuefun : Helper.CheckProperties( 'Test', Helper )
             }
         },
 
@@ -31,9 +31,8 @@
          */
         CheckProperties : function ( ns, obj , returnValue )
         {
-
-            var pieces = ns.split( '.' );
-
+            var pieces = (typeof ns == 'string') ?  ns.split( '.' ) : [ ns ];
+    
             /**
              * Проходим рекурсивно по объекту
              * @param aProps
@@ -43,22 +42,20 @@
              */
             function checkProp ( aProps, object , returnValue )
             {
-
                 var prop = aProps.shift();
                 var hasProp = object.hasOwnProperty( prop );
-
+    
                 if ( aProps.length && hasProp )
                 {
                     return checkProp( aProps, object[prop] , returnValue )
                 } else
                 {
-
                     return hasProp ?
                         (
                             returnValue ?
                                 (
                                     typeof object[prop]!=='undefined' ? object[prop]
-
+    
                                         : null
                                 )
                                 : hasProp
@@ -66,7 +63,7 @@
                         : hasProp;
                 }
             }
-
+    
             return checkProp( pieces, obj , returnValue );
         }
 
