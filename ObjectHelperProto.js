@@ -1,6 +1,6 @@
 Object.prototype.CheckProperties = Array.prototype.CheckProperties = function ( ns , returnValue, callback )
 {
-    var pieces = (typeof ns == 'string') ?  ns.split( '.' ) : [ ns ];
+    var pieces = (typeof ns == 'string') ?  ns.split( '.' ) : ns ;
 
     /**
      * Проходим рекурсивно по объекту
