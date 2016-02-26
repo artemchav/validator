@@ -72,6 +72,8 @@ Tests = {
       exist   : Tests.CheckProperties 'theprop.subprop.subsubprop' # true
       value   : Tests.CheckProperties 'theprop.subprop.subsubprop', true # "123"
       nilvalue: Tests.CheckProperties 'theprop.subprop.null', true # null
+      valuestandart : Helper.CheckProperties 'theprop.subprop.subsubprop.length' # true
+      valuelength   : Helper.CheckProperties 'theprop.subprop.subsubprop.length', true # 3
       callback: typeof Tests.CheckProperties 'theprop.subprop.subsubprop', true, parseInt # "number"
       notexist: Tests.CheckProperties 'theprop.subprop.subsubprop2', Tests # false
     }
