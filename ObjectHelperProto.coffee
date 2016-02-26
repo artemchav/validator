@@ -1,4 +1,3 @@
-Helper = {}
 ###
 # Проверяем/обрабатываем свойство, не ёбаясь об промежуточные свойства объекта
 #
@@ -47,8 +46,6 @@ Object::CheckProperties = ( ns , returnValue, callback ) ->
 ###
 Object::SetProperties = (ns, value) ->
   pieces = if (typeof ns is'string') then ns.split '.'  else ns 
-  console.log(ns)
-  console.log(typeof ns)
   prop = pieces.shift();
 
   if (pieces.length)
