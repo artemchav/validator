@@ -61,23 +61,23 @@ Object::SetProperties = (ns, value) ->
 #######################################
 # Tests
 #######################################
-Helper = {
+Tests = {
   SetTest : () ->
-    Helper.SetProperties 'theprop.subprop.subsubprop', '123'
-    Helper.SetProperties 'theprop.subprop.null'
+    Tests.SetProperties 'theprop.subprop.subsubprop', '123'
+    Tests.SetProperties 'theprop.subprop.null'
 
 
   Test           : () ->
     return {
-      exist   : Helper.CheckProperties 'theprop.subprop.subsubprop'
-      value   : Helper.CheckProperties 'theprop.subprop.subsubprop', true
-      nilvalue: Helper.CheckProperties 'theprop.subprop.null', true
-      callback: typeof Helper.CheckProperties 'theprop.subprop.subsubprop', true, parseInt
-      notexist: Helper.CheckProperties 'theprop.subprop.subsubprop2', Helper
+      exist   : Tests.CheckProperties 'theprop.subprop.subsubprop' # true
+      value   : Tests.CheckProperties 'theprop.subprop.subsubprop', true # "123"
+      nilvalue: Tests.CheckProperties 'theprop.subprop.null', true # null
+      callback: typeof Tests.CheckProperties 'theprop.subprop.subsubprop', true, parseInt # "number"
+      notexist: Tests.CheckProperties 'theprop.subprop.subsubprop2', Tests # false
     }
 }
 
-console.log Helper
-console.log Helper.SetTest()
-console.log Helper.Test()
-console.log Helper
+console.log Tests
+console.log Tests.SetTest()
+console.log Tests.Test()
+console.log Tests
