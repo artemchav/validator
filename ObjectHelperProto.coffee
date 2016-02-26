@@ -1,3 +1,4 @@
+Helper = {}
 ###
 # Проверяем/обрабатываем свойство, не ёбаясь об промежуточные свойства объекта
 #
@@ -11,7 +12,7 @@
 ###
 Object::CheckProperties = ( ns , returnValue, callback ) ->
 
-  pieces = if typeof ns == 'string' then ns.split '.'  else ns 
+  pieces = if typeof ns == 'string' then ns.split '.'  else ns
 
   checkProp = (aProps, object, returnValue) ->
     prop = aProps.shift()
@@ -45,7 +46,9 @@ Object::CheckProperties = ( ns , returnValue, callback ) ->
 # @constructor
 ###
 Object::SetProperties = (ns, value) ->
-  pieces = if (typeof ns is'string') then ns.split '.'  else ns 
+  pieces = if (typeof ns is'string') then ns.split '.'  else ns
+  console.log(ns)
+  console.log(typeof ns)
   prop = pieces.shift();
 
   if (pieces.length)
@@ -57,11 +60,14 @@ Object::SetProperties = (ns, value) ->
   else
     this[prop] = value;
   return
-
+  
+#######################################
+# Tests
+#######################################
 Helper = {
   SetTest : () ->
     Helper.SetProperties 'theprop.subprop.subsubprop', '123'
-  
+
   Test           : () ->
     return {
       exist   : Helper.CheckProperties 'theprop.subprop.subsubprop'
