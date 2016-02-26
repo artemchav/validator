@@ -46,8 +46,6 @@ Object::CheckProperties = ( ns , returnValue, callback ) ->
 ###
 Object::SetProperties = (ns, value) ->
   pieces = if (typeof ns is'string') then ns.split '.'  else ns
-  console.log(ns)
-  console.log(typeof ns)
   prop = pieces.shift();
 
   if (pieces.length)
@@ -59,18 +57,21 @@ Object::SetProperties = (ns, value) ->
   else
     this[prop] = value;
   return
-  
+
 #######################################
 # Tests
 #######################################
 Helper = {
   SetTest : () ->
     Helper.SetProperties 'theprop.subprop.subsubprop', '123'
+    Helper.SetProperties 'theprop.subprop.null'
+
 
   Test           : () ->
     return {
       exist   : Helper.CheckProperties 'theprop.subprop.subsubprop'
       value   : Helper.CheckProperties 'theprop.subprop.subsubprop', true
+      nilvalue: Helper.CheckProperties 'theprop.subprop.null', true
       callback: typeof Helper.CheckProperties 'theprop.subprop.subsubprop', true, parseInt
       notexist: Helper.CheckProperties 'theprop.subprop.subsubprop2', Helper
     }
